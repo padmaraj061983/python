@@ -1,0 +1,3 @@
+Git log debugging is happening
+
+To see the difference
