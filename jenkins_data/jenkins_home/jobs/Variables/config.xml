@@ -1,0 +1,29 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>echo &quot;The Build number is $BUILD_NUMBER&quot;
+echo &quot;The Build Id is $BUILD_ID&quot;
+echo &quot;The Build Url is $ BUILD_URL&quot;
+echo &quot;The Job name is $JOB_NAME&quot;
+echo &quot;The Build Tag is $BUILD_TAG&quot;
+echo &quot;User defined Global variables&quot;
+echo &quot;-------------------------------&quot;
+echo &quot;The course name $COURSE_NAME&quot;
+echo &quot;The Location name $LOCATION&quot;</command>
+      <configuredLocalRules/>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

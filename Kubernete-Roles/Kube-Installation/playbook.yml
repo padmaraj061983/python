@@ -1,0 +1,8 @@
+---
+- hosts: all
+  remote_user: vagrant
+  become: yes
+  roles:
+    - docker-installation
+    - kubernetes-common-utils
+    - kubernete-master-installation

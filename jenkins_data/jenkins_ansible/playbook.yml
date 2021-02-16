@@ -1,0 +1,5 @@
+---
+- hosts: test1
+  tasks:
+  - name: Pre-requisties installation 
+    shell: echo Hello World with Ansible > /tmp/ansible_file

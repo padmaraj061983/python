@@ -1,0 +1,176 @@
+---
+- hosts: all
+  remote_user: vagrant
+  become: yes
+  tasks:
+#  - name: deploy ssh key to account
+#    authorized_key: user='vagrant' key="{{lookup('file','/root/.ssh/id_rsa.pub')}}"
+  
+  - name: Docker Dependencies Installation
+    yum:
+      name: "{{ packages }}"
+      state: present 
+    vars:
+      packages:
+      - yum-utils
+      - device-mapper-persistent-data
+      - lvm2
+
+  - name: yum-clean-metadata
+    command: yum clean metadata
+    args:
+      warn: no
+  
+  - name: Add Docker Repo
+    yum_repository:
+      name: dockerrepo
+      state: absent
+      description: DOCKER CENTOS repo
+      baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+    notify: yum-clean-metadata
+  
+  - name: Docker Installation
+    yum:
+      name: docker
+      state: present 
+  
+  - name: Start Docker Service 
+    systemd:
+      name: docker
+      state: started
+  
+  - name: Enable the Docker Service 
+    systemd:
+      name: docker
+      enabled: yes
+      masked: no
+
+  - name: Create a Kubernetes repository file 
+    file:
+      path: /etc/yum.repos.d/kubernetes.repo
+      state: touch
+
+  - name: Copy Kubernetes repository
+    blockinfile:
+      dest: /etc/yum.repos.d/kubernetes.repo
+      block: |
+        [kubernetes]
+        name=Kubernetes
+        baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+        enabled=1
+        gpgcheck=1
+        repo_gpgcheck=1
+        gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+  
+  - name: Kubernetes Installations
+    yum:
+      name: "{{ kube_packages }}"
+      state: present 
+    vars:
+      kube_packages:
+      - kubelet
+      - kubeadm
+      - kubectl
+  
+  - name: Kubelet Enabled 
+    systemd:
+      name: kubelet
+      enabled: yes
+      masked: no 
+
+  - name: Kubelet Start
+    systemd:
+      name: kubelet
+      state: started
+
+
+  - name: Disabling Firewalls 
+    command: "{{ cmd }}"
+    vars:
+      cmd:
+      - firewall-cmd --permanent --add-port=6443/tcp
+      - firewall-cmd --permanent --add-port=2379-2380/tcp
+      - firewall-cmd --permanent --add-port=10250/tcp
+      - firewall-cmd --permanent --add-port=10251/tcp
+      - firewall-cmd --permanent --add-port=10252/tcp
+      - firewall-cmd --permanent --add-port=10255/tcp
+      - firewall-cmd --reload
+    ignore_errors: yes
+  
+  - name: Set Enforce and Swapoff a
+    command: swapoff -a 
+
+  - name: Initialize the kubernetes cluster using Kubeadm
+    when: inventory_hostname in groups['master']
+    command: kubeadm init --apiserver-advertise-address=192.168.7.3 --pod-network-cidr=192.168.0.0/16 
+    ignore_errors: yes
+
+  - name: Manage cluster as Regular User
+    command: mkdir -p $HOME/.kube
+    when: inventory_hostname in groups['master']
+
+  - name: Copy admin.conf to kube directory
+    copy:
+      src: /etc/kubernetes/admin.conf
+      dest: $HOME/.kube/config
+      remote_src: yes
+    when: inventory_hostname in groups['master']
+
+  - name: Adding the User and Group to execute the kubelet
+    file:
+      path: $HOME/.kube/config
+      owner: root
+      group: root
+    when: inventory_hostname in groups['master']
+
+  - name: Install Flannel pod network
+    command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml 
+    ignore_errors: yes
+    when: inventory_hostname in groups['master']
+
+  - name: Kubelet join token
+    command: kubeadm token create --print-join-command
+    when: inventory_hostname in groups['master']
+    register: kube_join
+
+  - name: Create a file 
+    file:
+      path: "/tmp/join_cmd.sh"
+      state: touch
+      mode: '777'
+      owner: vagrant
+      group: vagrant
+    when: inventory_hostname in groups['master']
+
+  - name: Create a file with content
+    copy:
+      content: "{{ kube_join.stdout }}" 
+      dest: "/tmp/join_cmd.sh"
+    when: inventory_hostname in groups['master']
+
+  - name: Copy the remote file to local file 
+    fetch:
+      src: /tmp/join_cmd.sh
+      dest: /tmp/fetched
+    when: inventory_hostname in groups['master']
+
+  - name: Copying the join command
+    copy:
+      src: /tmp/fetched/kmaster/tmp/join_cmd.sh
+      dest: /tmp/
+      mode: '777'
+      owner: vagrant
+      group: vagrant
+    ignore_errors: yes
+
+  - name: Set join command as fact 
+    shell: |
+      "/tmp/join_cmd.sh"
+    when: inventory_hostname in groups['workers']
+    ignore_errors: yes
+
+  
+
+
+
+ 

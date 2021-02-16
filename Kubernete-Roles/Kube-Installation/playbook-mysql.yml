@@ -1,0 +1,14 @@
+#---
+#- hosts: all
+#  roles:
+#  - {role: mysql, mysql_root_db_pass: foobar, mysql_db: none, mysql_users: none }
+--- 
+- 
+  become: true
+  hosts: all
+  roles: 
+    - 
+      mysql_db: none
+      mysql_root_db_pass: foobar
+      mysql_users: none
+      role: mysql
