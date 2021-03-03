@@ -1,6 +1,7 @@
 ---
 - name: Initialize the kubernetes cluster using Kubeadm
-  command: kubeadm init --pod-network-cidr=192.168.0.0/16
+  command: kubeadm init --apiserver-advertise-address=192.168.7.3 --pod-network-cidr=192.168.0.0/16 
+  ignore_errors: yes
 
 - name: Kubelet join token
   command: kubeadm token create --print-join-command
@@ -28,3 +29,23 @@
 - name: Setup the Pod Network
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
+
+- name: Create a file 
+  file:
+    path: "/tmp/join_cmd.sh"
+    state: touch 
+    mode: 777
+    owner: vagrant
+    group: vagrant
+ 
+- name: Copy the Join token 
+  copy:
+    content: "{{ kube_join.stdout }}"
+    dest: "/tmp/join_cmd.sh"
+
+- name: Copy the Remote file to Local Directory
+  fetch:
+    src: /tmp/join_cmd.sh
+    dest: /tmp/fetched
+
+  
