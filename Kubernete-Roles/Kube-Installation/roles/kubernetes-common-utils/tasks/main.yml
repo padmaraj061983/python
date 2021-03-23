@@ -1,0 +1,73 @@
+---
+- name: Copy the repo file
+  copy:
+    src: templates/kubernetes.repo
+    dest: /etc/yum.repos.d/kubernetes.repo
+
+- name: Copy the IpTables settings
+  copy:
+    src: templates/k8s.conf
+    dest: /etc/sysctl.d/k8s.conf
+
+- name: Restart System
+  command: sysctl --system
+
+- name: Disable the Firewall for port 10252/tcp
+  command: firewall-cmd --permanent --add-port=10252/tcp
+  ignore_errors: yes
+
+- name: Disable the Firewall for port 10255/tcp
+  command: firewall-cmd --permanent --add-port=10255/tcp
+  ignore_errors: yes
+
+- name: Disable the Firewall for port 6443/tcp
+  command: firewall-cmd --permanent --add-port=6433/tcp
+  ignore_errors: yes
+
+- name: Disable the Firewall for port 2379-2380/tcp
+  command: firewall-cmd --permanent --add-port=2379-2380/tcp
+  ignore_errors: yes
+
+- name: Disable the Firewall for port 10250/tcp
+  command: firewall-cmd --permanent --add-port=10250/tcp
+  ignore_errors: yes
+
+- name: Disable the Firewall for port 10251/tcp
+  command: firewall-cmd --permanent --add-port=10251/tcp
+  ignore_errors: yes
+
+- name: firewall-reload
+  command: firewall-cmd --reload
+  ignore_errors: yes
+
+- name: Kubernetes Installations
+  yum:
+    name: "{{ kube_packages }}"
+    state: present
+  vars:
+    kube_packages:
+    - kubelet
+    - kubeadm
+    - kubectl
+
+- name: Kubelet Enabled
+  systemd:
+    name: kubelet
+    enabled: yes
+    masked: no
+
+- name: Kubelet Start
+  systemd:
+    name: kubelet
+    state: started
+
+- name: Set setenforce 0
+  command: setenforce 0
+
+
+- name: Disabling SELinux 
+  command: sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
+
+- name: Set Swapoff a
+  command: swapoff -a
+

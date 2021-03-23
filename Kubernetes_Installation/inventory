@@ -1,0 +1,6 @@
+[master]
+kmaster
+
+[workers]
+knode01
+knode02

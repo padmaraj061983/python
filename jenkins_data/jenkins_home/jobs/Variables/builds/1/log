@@ -1,0 +1,23 @@
+Started by user [8mha:////4M7+PutPo+rZSrLmc2g9t1+Sq+vkzpj0Fuh/5TAWSPGbAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/Variables
+[Variables] $ /bin/sh -xe /tmp/jenkins21111745451921597.sh
++ echo The Build number is 1
+The Build number is 1
++ echo The Build Id is 1
+The Build Id is 1
++ echo The Build Url is $ BUILD_URL
+The Build Url is $ BUILD_URL
++ echo The Job name is Variables
+The Job name is Variables
++ echo The Build Tag is jenkins-Variables-1
+The Build Tag is jenkins-Variables-1
++ echo User defined Global variables
+User defined Global variables
++ echo -------------------------------
+-------------------------------
++ echo The course name DevOps
+The course name DevOps
++ echo The Location name BANGLORE
+The Location name BANGLORE
+Finished: SUCCESS

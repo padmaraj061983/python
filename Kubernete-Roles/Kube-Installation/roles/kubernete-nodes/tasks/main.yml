@@ -1,0 +1,14 @@
+- name: Copy the Join Command to Worker Nodes
+  copy:
+    src: /tmp/fetched/kmaster/tmp/join_cmd.sh
+    dest: /tmp/
+    mode: '777'
+    owner: vagrant
+    group: vagrant
+  ignore_errors: yes
+
+- name: Set join command 
+  shell: | 
+    "/tmp/join_cmd.sh"
+  
+

@@ -1,0 +1,43 @@
+---
+#- name: deploy ssh key to account
+#  authorized_key: user='vagrant' key="{{lookup('file','/root/.ssh/id_rsa.pub')}}"
+
+- name: Docker Dependencies Installation
+  yum:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: yum-clean-metadata
+  command: yum clean metadata
+  args:
+    warn: no
+
+- name: Add Docker Repo
+  yum_repository:
+    name: dockerrepo
+    state: absent
+    description: DOCKER CENTOS repo
+    baseurl: https://download.docker.com/linux/centos/docker-ce.repo
+  notify: yum-clean-metadata
+
+- name: Docker Installation
+  yum:
+    name: docker
+    state: present
+
+- name: Start Docker Service
+  systemd:
+    name: docker
+    state: started
+
+- name: Enable the Docker Service
+  systemd:
+    name: docker
+    enabled: yes
+    masked: no
+

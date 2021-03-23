@@ -1,0 +1,12 @@
+list=[10,20,30,40,50,60,70,80,90,100]
+print("4th index in the list:",list[4])
+print("Length of list:",len(list))
+print("Last value of index",list[-1])
+#print("Last value of index",list[100])
+print("-"*100)
+print("-"*45,"Slice Operators","-"*35)
+print("-"*100)
+print(list[2:7:2])
+print(list[2::3])
+print(list[8:2:-2])
+print(list[4:100])

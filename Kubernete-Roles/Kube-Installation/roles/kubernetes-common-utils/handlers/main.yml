@@ -1,0 +1,7 @@
+---
+- name: Restart System
+  command: sysctl --system
+
+- name: firewall-reload
+  command: firewall-cmd --reload
+  ignore_errors: yes
