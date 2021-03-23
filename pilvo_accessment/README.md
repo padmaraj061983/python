@@ -8,5 +8,8 @@ There are couple of scripts
      So while running the script we need to have one client and one SIPp client
 
  All the Sipp Scripts, Python Script and Flow logs are pushed to reposistory
+ 
+ 
+ As I was 486 Buy and 480 Temporarily unavailable , I followed the above approach
 
 
