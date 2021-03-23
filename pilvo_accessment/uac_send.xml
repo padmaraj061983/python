@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<!-- INVITE tel:[called_number] SIP/2.0 -->
+<!--	INVITE sip:[called_number]@[local_ip] SIP/2.0-->
+<scenario name="Basic Call">
+  <send retrans="500">
+           <![CDATA[
+            INVITE sip:[field0]@[field2];transport=TCP SIP/2.0
+            Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+            Max-Forwards: 69
+            Contact: <sip:[field3]@[field2];ob>
+            To: sip:[field0]@[field2]
+            From: <sip:[field3]@[field2]>;tag=1
+            Supported: 100rel,precondition
+            Call-ID: [call_id]
+            CSeq: 1 INVITE
+            Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+            User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5) RCS b12.19.0.5
+            Content-Type: application/sdp
+            Content-Length: [len]
+
+            v=0
+            o=ccs-0-275-1 027211800533498 1276217390 IN IP4 [local_ip]
+            s=VoIP Session
+            c=IN IP4 [local_ip]
+            b=AS:80
+            b=RS:1000
+            b=RR:3000
+            t=0 0
+            m=audio 8082 RTP/AVP 0 102 96 8 18 120 13
+            b=RS:1000
+            b=RR:3000
+            a=sendrecv
+            a=ptime:20
+            a=msi:mavodi-0-14d-1-2-ffffffff-@[local_ip]
+            a=rtpmap:0 PCMU/8000/1
+            a=rtpmap:102 AMR-WB/16000/1
+
+
+        ]]></send>
+  <recv response="407" auth="true">
+  </recv>
+  <send><![CDATA[
+            ACK sip:[field0]@[field2];transport=TCP 
+            Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+            [last_From:]
+            [last_To:]
+            [last_Call-ID:]
+            CSeq: 1 ACK
+            Max-Forwards: 69
+            Content-Length: 0
+
+        ]]></send>
+
+ 
+  <send retrans="500">
+           <![CDATA[
+            INVITE sip:[field0]@[field2];transport=TCP SIP/2.0
+            Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+            Max-Forwards: 69
+            Contact: <sip:[field3]@[field2];ob>
+            To: sip:[field0]@[field2]
+            From: <sip:[field3]@[field2]>;tag=1
+            Supported: 100rel,precondition
+            Call-ID: [call_id]
+            CSeq: 1 INVITE
+            Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+            [field1]
+            User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5) RCS b12.19.0.5
+            Content-Type: application/SDP
+            Content-Length: [len]
+
+            v=0
+            o=ccs-0-275-1 027211800533498 1276217390 IN IP4 [local_ip]
+            s=VoIP Session
+            c=IN IP4 [local_ip]
+            b=AS:80
+            b=RS:1000
+            b=RR:3000
+            t=0 0
+            m=audio 8082 RTP/AVP 0 102 96 8 18 120 13
+            b=RS:1000
+            b=RR:3000
+            a=sendrecv
+            a=ptime:20
+            a=msi:mavodi-0-14d-1-2-ffffffff-@[local_ip]
+            a=rtpmap:0 PCMU/8000/1
+            a=rtpmap:102 AMR-WB/16000/1
+    ]]></send>
+
+  <recv response="100" optional="false">
+    </recv>
+  <recv response="183" optional="false">
+  </recv>
+  <recv response="200">
+   <action>
+      <ereg regexp="sip:[^\&gt;]*" search_in="hdr" header="Contact:" check_it="true" assign_to="1"/>
+    </action>
+  </recv>
+<send><![CDATA[
+            ACK [$1] SIP/2.0 
+            Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+            [last_To:]
+            [last_From:]
+            [last_Call-ID:]
+            Contact: <sip:[field3]@[field2];ob>
+            CSeq: 1 ACK
+            Max-Forwards: 69
+            Content-Length: 0 
+
+        ]]></send>
+
+<!--recv request="BYE"/>
+ <send><![CDATA[
+            
+            SIP/2.0 200 OK
+            [last_Via:]
+            [last_From:]
+            [last_To:]
+            [last_Call-ID:]
+            [last_CSeq:]
+            Contact: <sip:[field3]@[field2];ob>;
+            Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+            Content-Length: 0
+        ]]></send-->
+<pause milliseconds="50000"/>
+ <send>
+           <![CDATA[
+            BYE [$1] SIP/2.0
+            Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+            Max-Forwards: 69
+            [last_To:]
+            [last_From:]
+            [last_Call-ID:]
+            CSeq: 1 BYE 
+            Content-Length: 0 
+ ]]></send>
+
+  <recv response="200">
+  </recv>
+
+</scenario>

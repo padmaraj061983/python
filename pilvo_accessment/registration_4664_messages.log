@@ -1,0 +1,64 @@
+----------------------------------------------- 2021-03-23 09:25:06.663907
+UDP message sent (493 bytes):
+
+REGISTER sip:phone.plivo.com SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4664-1-0;rport
+From: <sip:test1281881673873471385@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>
+Contact: <sip:test1281881673873471385@192.168.30.2:7012;transport=udp>
+Call-ID: 1-4664@192.168.30.2
+CSeq: 1 REGISTER
+Expires: 6400
+Allow: REGISTER, MESSAGE, NOTIFY, REFER, INFO, ACK, BYE, INVITE, OPTIONS, CANCEL, UPDATE
+Max-Forwards: 69
+Require: path
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:25:06.976034
+UDP message received [452] bytes :
+
+SIP/2.0 401 Unauthorized
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4664-1-0;received=106.51.233.252;rport=8492
+Call-ID: 1-4664@192.168.30.2
+From: <sip:test1281881673873471385@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=36045fe64c2cc3a2467eef830a1d7423.77f384b7
+CSeq: 1 REGISTER
+WWW-Authenticate: Digest realm="phone.plivo.com",nonce="YFm1HmBZs/LIRiHeaawdDLG9gQMTRNrK"
+Server: Plivo
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:25:06.976338
+UDP message sent (836 bytes):
+
+REGISTER sip:phone.plivo.com SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4664-1-2;rport
+Max-Forwards: 69
+Contact: <sip:test1281881673873471385@ 192.168.30.2:7012;ob>
+To: <sip:test1281881673873471385@phone.plivo.com>
+From: <sip:test1281881673873471385@phone.plivo.com>;tag=1
+Call-ID: 1-4664@192.168.30.2
+CSeq: 2 REGISTER
+Expires: 3600
+Allow: REGISTER, MESSAGE, NOTIFY, REFER, INFO, ACK, BYE, INVITE, OPTIONS, CANCEL, UPDATE
+Authorization: Digest username="test1281881673873471385@phone.plivo.com",realm="phone.plivo.com",uri="sip:52.9.254.127:5060",nonce="YFm1HmBZs/LIRiHeaawdDLG9gQMTRNrK",response="16c2423ee5d644460e9e425d98f5a4fc",algorithm=MD5
+Supported: timer, gruu, join, collaboration, replaces, path, outbound
+User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5)
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:25:07.226825
+UDP message received [426] bytes :
+
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4664-1-2;received=106.51.233.252;rport=8492
+Call-ID: 1-4664@192.168.30.2
+From: <sip:test1281881673873471385@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=36045fe64c2cc3a2467eef830a1d7423.77f384b7
+CSeq: 2 REGISTER
+Server: Plivo
+Contact: <sip:test1281881673873471385@ 192.168.30.2:7012;ob>;expires=3600
+Content-Length: 0
+
+

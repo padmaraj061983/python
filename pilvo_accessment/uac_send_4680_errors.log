@@ -1,0 +1,53 @@
+sipp: The following events occured:
+2021-03-23	09:28:03.530858	1616491683.530858: Discarding message which can't be mapped to a known SIPp call:
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.24.15:5060;branch=z9hG4bK4954793
+Call-ID: 7d522313-1279e4b8-610547d@10.202.24.15
+From: <sip:keepalive@phone.plivo.com>;tag=47fa944a
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+.
+2021-03-23	09:28:03.531440	1616491683.531440: Overload warning: the minor watchdog timer 500ms has been tripped (550), 119 trips remaining..
+2021-03-23	09:28:07.710110	1616491687.710110: Overload warning: the minor watchdog timer 500ms has been tripped (514), 118 trips remaining..
+2021-03-23	09:28:21.125177	1616491701.125177: Discarding message which can't be mapped to a known SIPp call:
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.22.16:5060;branch=z9hG4bK7059231
+Call-ID: 74419885-1790c350-6499e33@10.202.22.16
+From: <sip:keepalive@phone.plivo.com>;tag=477f5290
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+.
+2021-03-23	09:28:33.543063	1616491713.543063: Discarding message which can't be mapped to a known SIPp call:
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.24.15:5060;branch=z9hG4bK6604754
+Call-ID: 7d522313-1279e7d8-610549b@10.202.24.15
+From: <sip:keepalive@phone.plivo.com>;tag=47fa976a
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+.
+2021-03-23	09:28:37.787753	1616491717.787753: Overload warning: the minor watchdog timer 500ms has been tripped (512), 117 trips remaining..
+2021-03-23	09:28:38.425160	1616491718.425160: Overload warning: the minor watchdog timer 500ms has been tripped (637), 116 trips remaining..
+2021-03-23	09:28:51.129950	1616491731.129950: Discarding message which can't be mapped to a known SIPp call:
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.22.16:5060;branch=z9hG4bK2655916
+Call-ID: 74419885-1790c64b-6499e51@10.202.22.16
+From: <sip:keepalive@phone.plivo.com>;tag=477f558b
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+.
+2021-03-23	09:28:51.558073	1616491731.558073: Overload warning: the minor watchdog timer 500ms has been tripped (595), 115 trips remaining..
+2021-03-23	09:28:52.797165	1616491732.797165: Overload warning: the minor watchdog timer 500ms has been tripped (830), 114 trips remaining..
+2021-03-23	09:28:53.791010	1616491733.791010: Overload warning: the minor watchdog timer 500ms has been tripped (994), 113 trips remaining..
+2021-03-23	09:28:54.614879	1616491734.614879: Overload warning: the minor watchdog timer 500ms has been tripped (824), 112 trips remaining..
+2021-03-23	09:28:55.293083	1616491735.293083: Overload warning: the minor watchdog timer 500ms has been tripped (678), 111 trips remaining..
+2021-03-23	09:28:55.797787	1616491735.797787: Overload warning: the minor watchdog timer 500ms has been tripped (505), 110 trips remaining..
+2021-03-23	09:28:56.510494	1616491736.510494: Overload warning: the minor watchdog timer 500ms has been tripped (713), 109 trips remaining..
+2021-03-23	09:28:57.304658	1616491737.304658: Overload warning: the minor watchdog timer 500ms has been tripped (794), 108 trips remaining..

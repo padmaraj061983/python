@@ -1,0 +1,262 @@
+----------------------------------------------- 2021-03-23 09:28:02.699717
+UDP message sent (947 bytes):
+
+INVITE sip:test1281881673873471385@phone.plivo.com;transport=TCP SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-0;rport
+Max-Forwards: 69
+Contact: <sip:test895187951711567647677@phone.plivo.com;ob>
+To: sip:test1281881673873471385@phone.plivo.com
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+Supported: 100rel,precondition
+Call-ID: 1-4680@192.168.30.2
+CSeq: 1 INVITE
+Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5) RCS b12.19.0.5
+Content-Type: application/sdp
+Content-Length:   333
+
+v=0
+o=ccs-0-275-1 027211800533498 1276217390 IN IP4 192.168.30.2
+s=VoIP Session
+c=IN IP4 192.168.30.2
+b=AS:80
+b=RS:1000
+b=RR:3000
+t=0 0
+m=audio 8082 RTP/AVP 0 102 96 8 18 120 13
+b=RS:1000
+b=RR:3000
+a=sendrecv
+a=ptime:20
+a=msi:mavodi-0-14d-1-2-ffffffff-@192.168.30.2
+a=rtpmap:0 PCMU/8000/1
+a=rtpmap:102 AMR-WB/16000/1
+
+----------------------------------------------- 2021-03-23 09:28:02.944254
+UDP message received [482] bytes :
+
+SIP/2.0 407 Proxy Authentication Required
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-0;received=106.51.233.252;rport=8492
+Call-ID: 1-4680@192.168.30.2
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=36045fe64c2cc3a2467eef830a1d7423.77f384b7
+CSeq: 1 INVITE
+Proxy-Authenticate: Digest realm="phone.plivo.com",nonce="YFm1zmBZtKLkTsX/vwjzcgFtladnj8hp",qop="auth"
+Server: Plivo
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:02.944708
+UDP message sent (369 bytes):
+
+ACK sip:test1281881673873471385@phone.plivo.com;transport=TCP
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-2;rport
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=36045fe64c2cc3a2467eef830a1d7423.77f384b7
+Call-ID: 1-4680@192.168.30.2
+CSeq: 1 ACK
+Max-Forwards: 69
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:02.944898
+UDP message sent (1217 bytes):
+
+INVITE sip:test1281881673873471385@phone.plivo.com;transport=TCP SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-3;rport
+Max-Forwards: 69
+Contact: <sip:test895187951711567647677@phone.plivo.com;ob>
+To: sip:test1281881673873471385@phone.plivo.com
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+Supported: 100rel,precondition
+Call-ID: 1-4680@192.168.30.2
+CSeq: 1 INVITE
+Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+Proxy-Authorization: Digest username="test1281881673873471385@phone.plivo.com",realm="phone.plivo.com",cnonce="6b8b4567",nc=00000001,qop=auth,uri="sip:52.9.254.127:5060",nonce="YFm1zmBZtKLkTsX/vwjzcgFtladnj8hp",response="e591a5fde1dd03c43875fcb28ac14582",algorithm=MD5
+User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5) RCS b12.19.0.5
+Content-Type: application/SDP
+Content-Length:   333
+
+v=0
+o=ccs-0-275-1 027211800533498 1276217390 IN IP4 192.168.30.2
+s=VoIP Session
+c=IN IP4 192.168.30.2
+b=AS:80
+b=RS:1000
+b=RR:3000
+t=0 0
+m=audio 8082 RTP/AVP 0 102 96 8 18 120 13
+b=RS:1000
+b=RR:3000
+a=sendrecv
+a=ptime:20
+a=msi:mavodi-0-14d-1-2-ffffffff-@192.168.30.2
+a=rtpmap:0 PCMU/8000/1
+a=rtpmap:102 AMR-WB/16000/1
+
+----------------------------------------------- 2021-03-23 09:28:03.205650
+UDP message received [341] bytes :
+
+SIP/2.0 100 trying -- your call is important to us
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-3;received=106.51.233.252;rport=8492
+Call-ID: 1-4680@192.168.30.2
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>
+CSeq: 1 INVITE
+Server: Plivo
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:03.530715
+UDP message received [269] bytes :
+
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.24.15:5060;branch=z9hG4bK4954793
+Call-ID: 7d522313-1279e4b8-610547d@10.202.24.15
+From: <sip:keepalive@phone.plivo.com>;tag=47fa944a
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:05.005830
+UDP message received [1042] bytes :
+
+SIP/2.0 183 Session Progress
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-3;received=106.51.233.252;rport=8492
+Record-Route: <sip:52.9.254.127;lr;ftag=1;did=9ed.2412>
+Call-ID: 1-4680@192.168.30.2
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=6K4Z5DZSH7eye
+CSeq: 1 INVITE
+Contact: <sip:test1281881673873471385@10.204.22.154:5060;transport=udp>
+User-Agent: Plivo
+Accept: application/sdp
+Allow: INVITE,ACK,BYE,CANCEL,OPTIONS,MESSAGE,INFO,UPDATE,REFER,NOTIFY
+Supported: path,replaces
+Allow-Events: talk,hold,conference,refer
+Remote-Party-ID: "test1281881673873471385" <sip:test1281881673873471385@phone.plivo.com>;party=calling;privacy=off;screen=no
+Content-Length: 218
+Content-Type: application/sdp
+Content-Disposition: session
+
+v=0
+o=Plivo 1616459628 1616459629 IN IP4 52.220.63.153
+s=Plivo
+c=IN IP4 52.220.63.153
+t=0 0
+m=audio 32056 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+a=silenceSupp:off - - - -
+a=ptime:20
+a=rtcp:32057 IN IP4 52.220.63.153
+
+----------------------------------------------- 2021-03-23 09:28:07.004447
+UDP message received [993] bytes :
+
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-3;received=106.51.233.252;rport=8492
+Record-Route: <sip:52.9.254.127;lr;ftag=1;did=9ed.2412>
+Call-ID: 1-4680@192.168.30.2
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=6K4Z5DZSH7eye
+CSeq: 1 INVITE
+Contact: <sip:test1281881673873471385@10.204.22.154:5060;transport=udp>
+User-Agent: Plivo
+Allow: INVITE,ACK,BYE,CANCEL,OPTIONS,MESSAGE,INFO,UPDATE,REFER,NOTIFY
+Supported: path,replaces
+Allow-Events: talk,hold,conference,refer
+Remote-Party-ID: "Outbound Call" <sip:test1281881673873471385@phone.plivo.com>;party=calling;privacy=off;screen=no
+Content-Length: 218
+Content-Type: application/sdp
+Content-Disposition: session
+
+v=0
+o=Plivo 1616459628 1616459629 IN IP4 52.220.63.153
+s=Plivo
+c=IN IP4 52.220.63.153
+t=0 0
+m=audio 32056 RTP/AVP 0
+a=rtpmap:0 PCMU/8000
+a=silenceSupp:off - - - -
+a=ptime:20
+a=rtcp:32057 IN IP4 52.220.63.153
+
+----------------------------------------------- 2021-03-23 09:28:07.004713
+UDP message sent (413 bytes):
+
+ACK sip:test1281881673873471385@10.204.22.154:5060;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-7;rport
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=6K4Z5DZSH7eye
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+Call-ID: 1-4680@192.168.30.2
+Contact: <sip:test895187951711567647677@phone.plivo.com;ob>
+CSeq: 1 ACK
+Max-Forwards: 69
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:21.125110
+UDP message received [269] bytes :
+
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.22.16:5060;branch=z9hG4bK7059231
+Call-ID: 74419885-1790c350-6499e33@10.202.22.16
+From: <sip:keepalive@phone.plivo.com>;tag=477f5290
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:33.542995
+UDP message received [269] bytes :
+
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.24.15:5060;branch=z9hG4bK6604754
+Call-ID: 7d522313-1279e7d8-610549b@10.202.24.15
+From: <sip:keepalive@phone.plivo.com>;tag=47fa976a
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:51.129869
+UDP message received [269] bytes :
+
+OPTIONS sip:192.168.0.105:63184 SIP/2.0
+Via: SIP/2.0/UDP 10.202.22.16:5060;branch=z9hG4bK2655916
+Call-ID: 74419885-1790c64b-6499e51@10.202.22.16
+From: <sip:keepalive@phone.plivo.com>;tag=477f558b
+To: <sip:192.168.0.105:63184>
+CSeq: 1 OPTIONS
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:57.305358
+UDP message sent (352 bytes):
+
+BYE sip:test1281881673873471385@10.204.22.154:5060;transport=udp SIP/2.0
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-9;rport
+Max-Forwards: 69
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=6K4Z5DZSH7eye
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+Call-ID: 1-4680@192.168.30.2
+CSeq: 1 BYE
+Content-Length: 0
+
+
+----------------------------------------------- 2021-03-23 09:28:57.742517
+UDP message received [421] bytes :
+
+SIP/2.0 200 OK
+Via: SIP/2.0/UDP 192.168.30.2:7012;branch=z9hG4bK-4680-1-9;received=106.51.233.252;rport=8492
+Call-ID: 1-4680@192.168.30.2
+From: <sip:test895187951711567647677@phone.plivo.com>;tag=1
+To: <sip:test1281881673873471385@phone.plivo.com>;tag=6K4Z5DZSH7eye
+CSeq: 1 BYE
+User-Agent: Plivo
+Allow: INVITE,ACK,BYE,CANCEL,OPTIONS,MESSAGE,INFO,UPDATE,REFER,NOTIFY
+Supported: path,replaces
+Content-Length: 0
+
+

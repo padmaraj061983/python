@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="Basic Sipstone UAC">
+
+  <send retrans="500">
+    <![CDATA[
+    
+	REGISTER sip:[field2] SIP/2.0
+	Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+        From: <sip:[field0]@[field2]>;tag=[call_number]
+        To: <sip:[field0]@[field2]>
+        Contact: <sip:[field0]@[field3];transport=udp>
+	Call-ID: [call_id]
+	CSeq: 1 REGISTER
+	Expires: 6400
+	Allow: REGISTER, MESSAGE, NOTIFY, REFER, INFO, ACK, BYE, INVITE, OPTIONS, CANCEL, UPDATE
+        Max-Forwards: 69
+        Require: path
+	Content-Length: 0
+    
+  ]]>
+  </send>
+
+  <recv response="401" auth="true">
+  </recv> 
+
+  <send retrans="1000">
+    <![CDATA[
+      
+      
+	REGISTER sip:[field2] SIP/2.0
+	Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch];rport
+	Max-Forwards: 69
+        Contact: <sip:[field0]@ [local_ip]:[local_port];ob>
+	To: <sip:[field0]@[field2]>
+	From: <sip:[field0]@[field2]>;tag=[call_number]
+	Call-ID: [call_id]
+	CSeq: 2 REGISTER
+	Expires: 3600
+	Allow: REGISTER, MESSAGE, NOTIFY, REFER, INFO, ACK, BYE, INVITE, OPTIONS, CANCEL, UPDATE
+	[field1]
+	Supported: timer, gruu, join, collaboration, replaces, path, outbound
+	User-Agent: Mingle US Android v5.9.37 2016-2-2 (core v7.07 b12.19.0.5)
+	Content-Length: 0 
+   ]]>
+  </send>
+
+  <recv response="200" rrs="true">
+
+  </recv>
+
+ <label id="1"/>
+
+</scenario>

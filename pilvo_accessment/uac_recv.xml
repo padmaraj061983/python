@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+<scenario name="Pilvo Recv Script">
+  <recv request="INVITE" crlf="true">
+  <action>
+      <ereg regexp="sip:[^,]*" search_in="hdr" header="To:" check_it="true" assign_to="toHdr"/>
+  </action>
+  </recv>
+  <send><![CDATA[
+            
+            SIP/2.0 183 Session Progress 
+            [last_Via:]
+            [last_From:]
+            To: <[$toHdr]>;tag=[pid]SIPpTag01[call_number]
+            [last_Call-ID:]
+            [last_CSeq:]
+            Contact: <sip:[field0]@[local_ip]:[local_port];
+            Allow: INVITE,UPDATE,OPTIONS,REFER,NOTIFY,CANCEL,BYE,ACK,PRACK
+            Content-Length: 0
+            
+        ]]></send>
+ 
+
+  <send><![CDATA[
+            
+            SIP/2.0 200 OK
+            [last_Via:]
+            [last_From:]
+            [last_To:]
+            [last_Call-ID:]
+            [last_CSeq:]
+            Contact: <sip:[field0]@[local_ip]:[local_port];transport=udp>;
+            Content-Length: [len] 
+        ]]></send>
+ <recv request="ACK" optional="false">
+  </recv> 
+ <recv request="BYE" optional="false">
+  </recv>
+
+<send><![CDATA[
+
+            SIP/2.0 200 OK
+            [last_Via:]
+            [last_From:]
+            [last_To:]
+            [last_Call-ID:]
+            [last_CSeq:]
+            Contact: <sip:[field0]@[local_ip]:[local_port];transport=udp>;
+            Content-Length: [len]
+        ]]></send>
+
+ 
+</scenario>
+
